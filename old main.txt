@@ -39,6 +39,32 @@ int main(void)
         //TODO:: Please write your application code 
 		label:
 		(*x) = readOperand(operand1,n,op);
+		/*
+		while(1)
+		{
+			/*
+			do
+			{
+				inp=keypad_u8read();
+			} while(inp==0xFF);
+			_delay_ms(250);
+			if(inp<='9' && inp>='0')
+			{
+				(*operand1) = inp;
+				LCD_vSend_char(*operand1);
+			}
+			else
+			{
+				(*op) = inp;
+				break;
+			}
+			operand1++;
+			n++;
+			/*inp=='=' || inp =='A' || inp == 'x' || inp=='+' || inp=='-' || inp=='/'	
+		}
+		operand1 = operand1-n;
+		(*x)=charArrayToInt(operand1,n);
+		*/
 		
 		if(op=='A')
 		{
@@ -46,7 +72,30 @@ int main(void)
 			goto label;
 		}			
 		LCD_vSend_char((*op));
-		
+		/*
+		while(1)
+		{
+			do
+			{
+				inp=keypad_u8read();
+			} while(inp==0xFF);
+			_delay_ms(250);
+			if(inp<='9' && inp>='0')
+			{
+				(*operand2) = inp;
+				LCD_vSend_char(*operand2);
+			}
+			else
+			{
+				f = inp;
+				break;
+			}
+			operand2++;
+			m++;
+		}
+		operand2 = operand2-m;
+		(*y)=charArrayToInt(operand2,m);
+		*/
 		(*y)=readOperand(operand2,m,f);
 		
 		if((*f)=='=')
@@ -147,8 +196,7 @@ int operandtoInteger(char *operand, char n)
 
 void printInt(int z)
 {
-	LCD_vSend_char(z/1000 + 48);
-	LCD_vSend_char(((z/100)%10)+48);
+	LCD_vSend_char((z/100)+48);
 	LCD_vSend_char(((z/10)%10)+48);
 	LCD_vSend_char((z%10) + 48);
 }
